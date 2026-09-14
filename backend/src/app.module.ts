@@ -6,6 +6,7 @@ import { TripModule } from './modules/trip/trip.module';
 import { CompanionModule } from './modules/companion/companion.module';
 import { ChatModule } from './modules/chat/chat.module';
 import { DiaryModule } from './modules/diary/diary.module';
+import { FavoriteModule } from './modules/favorite/favorite.module';
 
-@Module({ imports: [TypeOrmModule.forRoot(typeormConfig()), UserModule, TripModule, CompanionModule, ChatModule, DiaryModule] })
+@Module({ imports: [TypeOrmModule.forRoot(typeormConfig()), UserModule, TripModule, CompanionModule, ChatModule, DiaryModule, FavoriteModule] })
 export class AppModule {}
