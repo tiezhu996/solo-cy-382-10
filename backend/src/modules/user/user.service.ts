@@ -10,7 +10,9 @@ export class UserService {
   constructor(@InjectRepository(UserEntity) private readonly users: Repository<UserEntity>, private readonly jwt: JwtService) {}
   async register(email: string, nickname: string, password: string) {
     const user = this.users.create({ email, nickname, passwordHash: await bcrypt.hash(password, 10) });
-    return this.users.save(user);
+    const saved = await this.users.save(user);
+    const { passwordHash, ...account } = saved;
+    return account;
   }
   async login(email: string, password: string) {
     const user = await this.users.findOneBy({ email });
